@@ -1,0 +1,79 @@
+#include<stdio.h>
+#include<stdlib.h>
+int top=-1,size=4,array[10];
+void push();
+void traversal();
+void pop(); 
+
+
+int main()
+{
+    
+
+    int choice;
+    while(1)
+    {
+        
+		printf("\nOperations performed by Stack");
+		printf("\n1.Push the element\n2.Pop the element\n3.traversal\n4.End");
+		printf("\n\nEnter the choice:");
+		scanf("%d",&choice);
+		
+		switch(choice)
+		{
+		    case 1: push();
+		    case 2: pop();
+		    case 3: traversal();
+		    case 4: exit(0);
+		    default: printf("enter number between 1-4");
+		}
+    }
+    return 0;
+}
+void push()
+{
+    int x;
+    printf("enter size of Stack");
+    scanf("%d",&size);
+    if (top=size-1){
+    printf("overflow");
+    }
+    else
+    {
+        printf("enter element to be inserted");
+        scanf("%d",&x);
+        top=top+1;
+        array[top]=x;
+        
+    }
+}
+
+
+void pop()
+{
+	if(top==-1)
+	{
+		printf("\nUnderflow!!");
+	}
+	else
+	{
+		printf("\nPopped element:  %d",array[top]);
+		top=top-1;
+	}
+}
+
+void traversal()
+{
+    int i;
+    if(top==-1)
+    {
+        printf("undeflow");
+    }
+    else
+    {
+        for(i=top;i>0;i--)
+        {
+            printf("%d",array[i]);
+        }
+    }
+}
