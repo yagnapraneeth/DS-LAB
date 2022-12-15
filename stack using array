@@ -1,79 +1,91 @@
 #include<stdio.h>
-#include<stdlib.h>
-int top=-1,size=4,array[10];
+int stack[100],choice,size,top,x,i,n;
 void push();
+void pop();
 void traversal();
-void pop(); 
-
-
 int main()
 {
-    
-
-    int choice;
+    top=-1;
+    printf("\n Enter the size of STACK[MAX=100]:");
+    scanf("%d",&size);
+    printf("\n\t STACK OPERATIONS USING ARRAY");
+    printf("\n\t--------------------------------");
+    printf("\n\t 1.PUSH\n\t 2.POP\n\t 3.DISPLAY\n\t 4.EXIT");
     while(1)
     {
-        
-		printf("\nOperations performed by Stack");
-		printf("\n1.Push the element\n2.Pop the element\n3.traversal\n4.End");
-		printf("\n\nEnter the choice:");
-		scanf("%d",&choice);
-		
-		switch(choice)
-		{
-		    case 1: push();
-		    case 2: pop();
-		    case 3: traversal();
-		    case 4: exit(0);
-		    default: printf("enter number between 1-4");
-		}
+        printf("\n Enter the Choice:");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+            case 1:
+            {
+                push();
+                break;
+            }
+            case 2:
+            {
+                pop();
+                break;
+            }
+            case 3:
+            {
+                traversal();
+                break;
+            }
+            case 4:
+            {
+                printf("\n\t EXIT POINT ");
+                break;
+            }
+            default:
+            {
+                printf ("\n\t Please Enter a Valid Choice(1/2/3/4)");
+            }
+                
+        }
     }
+    while(choice!=4);
     return 0;
 }
 void push()
 {
-    int x;
-    printf("enter size of Stack");
-    scanf("%d",&size);
-    if (top=size-1){
-    printf("overflow");
-    }
-    else
+    if(top>=size-1)
     {
-        printf("enter element to be inserted");
-        scanf("%d",&x);
-        top=top+1;
-        array[top]=x;
+        printf("\n\tSTACK is over flow");
         
     }
+    else
+    {
+        printf(" Enter a value to be pushed:");
+        scanf("%d",&x);
+        top=top+1;
+        stack[top]=x;
+    }
 }
-
-
 void pop()
 {
-	if(top==-1)
-	{
-		printf("\nUnderflow!!");
-	}
-	else
-	{
-		printf("\nPopped element:  %d",array[top]);
-		top=top-1;
-	}
-}
-
-void traversal()
-{
-    int i;
-    if(top==-1)
+    if(top<=-1)
     {
-        printf("undeflow");
+        printf("\n\t Stack is under flow");
     }
     else
     {
-        for(i=top;i>0;i--)
-        {
-            printf("%d",array[i]);
-        }
+        printf("\n\t The popped elements is %d",stack[top]);
+        top--;
     }
+}
+void traversal()
+{
+    if(top>=0)
+    {
+        printf("\n The elements in STACK \n");
+        for(i=top; i>=0; i--)
+            printf("\n%d",stack[i]);
+        printf("\n Press Next Choice");
+    }
+    else
+    {
+        printf("\n The STACK is empty");
+    }
+   
 }
